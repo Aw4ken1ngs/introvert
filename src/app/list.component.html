@@ -1,41 +1,49 @@
 <div class="dropdown-container" (click)="$event.stopPropagation()">
-    <button class="dropdown-button" (click)="toggleDropdown()">
-        {{ getButtonLabel() }}
-    </button>
-
-    <div *ngIf="isDropdownOpen" class="dropdown">
-        <ul class="funnel-list">
-            <li *ngFor="let funnel of funnels" class="funnel-item">
-                <div class="funnel-header">
-                    <input
-                            type="checkbox"
-                            [checked]="funnel.isCheck"
-                            (change)="toggleCheck(funnel)"
-                    />
-                    <span class="funnel-title" (click)="toggleExpand(funnel, $event)">
-            {{ funnel.title }}
-          </span>
-                </div>
-                <ul *ngIf="funnel.isExpanded" class="step-list">
-                    <li
-                            *ngFor="let step of funnel.steps"
-                            class="step-item"
-                            [ngClass]="{
-              'step-no-started': step.type === 'no-started',
-              'step-in-progress': step.type === 'in-progress',
-              'step-decision': step.type === 'decision',
-              'step-success': step.type === 'success'
-            }"
+  <button class="dropdown-button" (click)="toggleDropdown()">
+    {{ getButtonLabel() }}
+  </button>
+  @if (isDropdownOpen) {
+    <div class="dropdown">
+      <mat-list class="funnel-list">
+        @for (funnel of funnels; track funnel.id) {
+          <li class="funnel-item">
+            <div class="funnel-header">
+              <mat-checkbox
+                type="checkbox"
+                [checked]="funnel.isCheck"
+                (change)="toggleCheck(funnel)"
+              >
+              </mat-checkbox>
+                <span class="funnel-title" (click)="toggleExpand(funnel, $event)">
+                  {{ funnel.title }}
+                </span>
+            </div>
+            @if (funnel.isExpanded) {
+              <mat-list class="step-list">
+                @for (step of funnel.steps; track step.id) {
+                  <li
+                    class="step-item"
+                    [ngClass]="{
+                      'step-no-started': step.type === 'no-started',
+                      'step-in-progress': step.type === 'in-progress',
+                      'step-decision': step.type === 'decision',
+                      'step-success': step.type === 'success',
+                    }"
+                  >
+                    <mat-checkbox
+                      type="checkbox"
+                      [checked]="step.isCheck"
+                      (change)="toggleCheck(step)"
                     >
-                        <input
-                                type="checkbox"
-                                [checked]="step.isCheck"
-                                (change)="toggleCheck(step)"
-                        />
-                        {{ step.title }}
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                      {{ step.title }}
+                    </mat-checkbox>
+                  </li>
+                }
+              </mat-list>
+            }
+          </li>
+        }
+      </mat-list>
     </div>
+  }
 </div>
