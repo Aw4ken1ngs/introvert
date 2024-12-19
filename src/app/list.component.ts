@@ -24,6 +24,7 @@ type StepType = {
   standalone: true,
   imports: [CommonModule, MatCheckboxModule, MatListModule],
   templateUrl: './list.component.html',
+  styleUrl: './list.component.css',
 })
 export class List implements OnInit {
   isDropdownOpen = false;

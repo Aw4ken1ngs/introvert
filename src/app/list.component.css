@@ -1,0 +1,75 @@
+@import "node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+.step-no-started {
+    background-color: #64b5f6;
+}
+
+.step-in-progress {
+    background-color: #ffe066;
+}
+
+.step-decision {
+    background-color: #ff7043;
+}
+
+.step-success {
+    background-color: #81c784;
+}
+
+.step-item {
+    border-color: #ffffff   ;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+.funnel-list {
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.funnel-item {
+    border: 1px solid lightgray;
+    margin: 10px;
+    text-align: left;
+    padding: 8px;
+}
+
+.dropdown {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-button {
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+    background-color: #f0f0f0;
+}
+.dropdown-container {
+    width: 500px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
